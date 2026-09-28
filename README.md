@@ -20,7 +20,7 @@ powershell -ExecutionPolicy Bypass -File .\monitor.ps1 -Target <radio.co-host>
 
 | Reël | Beteken |
 |---|---|
-| `IP a -> b  [ASnnnn Naam]` | Publieke IP het verander (failover of handmatige oorskakeling). Die deel in hakies is die ISP wat nou gebruik word (bv. Vodacom of Vumatel/Velnet) |
+| `IP a -> b  [ASnnnn Naam]` | Publieke IP het verander (failover of handmatige oorskakeling). Die deel in hakies is die ISP wat nou gebruik word (bv. Vodacom of Veldnet) |
 | `PING VERLORE` / `PING herstel` | Pakkieverlies na die teiken |
 | `BUTT-instansies: 1 -> 2` | 'n Tweede BUTT-proses het begin |
 
