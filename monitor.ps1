@@ -22,7 +22,11 @@ while ($true) {
     # IP en BUTT-instansies: elke 5 sekondes, log net veranderinge
     if ($tick % 5 -eq 0) {
         try { $now = Invoke-RestMethod https://api.ipify.org -TimeoutSec 2 } catch { $now = "FAIL" }
-        if ($now -ne $ip) { Log "IP $ip -> $now"; $ip = $now }
+        if ($now -ne $ip) {
+            # ISP-naam net opgesoek wanneer die IP verander (ipinfo se gratis limiet)
+            try { $org = (Invoke-RestMethod "https://ipinfo.io/$now/org" -TimeoutSec 3).Trim() } catch { $org = "?" }
+            Log "IP $ip -> $now  [$org]"; $ip = $now
+        }
         $n = @(Get-Process butt -ErrorAction SilentlyContinue).Count
         if ($n -ne $butt) { Log "BUTT-instansies: $butt -> $n"; $butt = $n }
     }
